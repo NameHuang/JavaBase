@@ -1,0 +1,66 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE log4j:configuration SYSTEM "log4j.dtd">
+
+
+<log4j:configuration xmlns:log4j="http://jakarta.apache.org/log4j/">
+
+
+ <appender name="INFO_FILE_LOG" class="org.apache.log4j.RollingFileAppender">
+    <param name="append" value="true"/>
+    <param name="encoding" value="UTF-8"/>
+    <param name="file" value="E:/JavaseReview/javase/target/Java/logs/backup/info.log"/>
+    <param name="MaxFileSize" value="100MB"/>
+    <param name="MaxBackupIndex" value="10000"/>
+    <layout class="org.apache.log4j.PatternLayout">
+      <param name="ConversionPattern"
+             value="[%p]%d{yyyy-MM-dd HH:mm:ss:SSS}[%r][%t][%x] |%l: %m%n"/>
+    </layout>
+    <filter class="org.apache.log4j.varia.LevelRangeFilter">
+      <param name="LevelMin" value="INFO"/>
+    </filter>
+  </appender>
+
+
+  <appender name="DEBUG_FILE_LOG" class="org.apache.log4j.RollingFileAppender">
+    <param name="append" value="true"/>
+    <param name="encoding" value="UTF-8"/>
+    <param name="file" value="E:/JavaseReview/javase/target/Java/logs/backup/debug.log"/>
+    <param name="MaxFileSize" value="100MB"/>
+    <param name="MaxBackupIndex" value="10000"/>
+    <layout class="org.apache.log4j.PatternLayout">
+      <param name="ConversionPattern"
+             value="[%p]%d{yyyy-MM-dd HH:mm:ss:SSS}[%r][%t][%x] |%l: %m%n"/>
+    </layout>
+    <filter class="org.apache.log4j.varia.LevelRangeFilter">
+      <param name="LevelMin" value="DEBUG"/>
+    </filter>
+  </appender>
+
+
+  <appender name="ERROR_FILE_LOG" class="org.apache.log4j.RollingFileAppender">
+    <param name="append" value="true"/>
+    <param name="encoding" value="UTF-8"/>
+    <param name="file" value="E:/JavaseReview/javase/target/Java/logs/backup/error.log"/>
+    <param name="MaxFileSize" value="100MB"/>
+    <param name="MaxBackupIndex" value="1000"/>
+    <layout class="org.apache.log4j.PatternLayout">
+      <param name="ConversionPattern"
+             value="[%p]%d{yyyy-MM-dd HH:mm:ss:SSS}[%r][%t][%x] |%l: %m%n"/>
+    </layout>
+    <filter class="org.apache.log4j.varia.LevelRangeFilter">
+      <param name="LevelMin" value="ERROR"/>
+    </filter>
+  </appender>
+  
+  
+  
+  <category name="simple.javase" additivity="true">
+    <priority value="DEBUG"/>
+  </category>
+  <root>
+    <priority value="DEBUG"/>
+    <appender-ref ref="ERROR_FILE_LOG"/>
+    <appender-ref ref="DEBUG_FILE_LOG"/>
+    <appender-ref ref="INFO_FILE_LOG"/>
+  </root>
+</log4j:configuration>
